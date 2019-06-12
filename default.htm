@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf8"/>
+    <title>Disk Scheduler</title>
+    <!-- import ChartJs library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <!-- import bootstrap library -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"/>
+    <!-- import custom css library -->
+    <link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+</head>
+
+<body>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active"
+       id="FCFS"
+       onclick="applyFCFS()"
+       href="#">FCFS</a>
+    <a class="nav-item nav-link" id="SSTF" onclick="applySSTF()" href="#">SSTF</a>
+    <a class="nav-item nav-link" id="SCAN" onclick="applySCANUP()" href="#">SCAN</a>
+    <a class="nav-item nav-link" id="CSCAN" onclick="applyCSCANUP()" href="#">C-SCAN</a>
+    <a class="nav-item nav-link" id="LOOK" onclick="applyLOOKUP()" href="#">LOOK</a>
+    <a class="nav-item nav-link" id="CLOOK" onclick="applyCLOOKUP()" href="#">C-LOOK</a>
+    <a class="nav-item nav-link disabled">ABOUT US</a>
+</nav>
+
+<main>
+    <div class="card">
+        <div class="card-body">
+            <h4>Disk scheduler</h4>
+            <div class="form-group">
+                <label for="blocks-range">Blocks range</label>
+                <select class="form-control" id="blocks-range">
+                    <option>50</option>
+                    <option>100</option>
+                    <option>200</option>
+                    <option>300</option>
+                    <option>400</option>
+                    <option>500</option>
+                    <option>600</option>
+                    <option>700</option>
+                    <option>800</option>
+                    <option>900</option>
+                    <option selected>1000</option>
+                </select>
+
+                <label for="blocks-list">Blocks list</label>
+                <input type="text"
+                       style="border-radius: 5px; margin-bottom: 20px;"
+                       class="form-control"
+                       name="blocks-list"
+                       id="blocks-list"
+                       placeholder="Give me tasks"/>
+
+                <input name="submit_btn"
+                       id="submit-btn"
+                       class="btn btn-primary"
+                       type="button"
+                       value="Update scheduler"
+                       onclick="updateChart()"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="desktop">
+        <canvas id="myChart"></canvas>
+    </div>
+</main>
+
+<script src="javascript/index.js" type="text/javascript"></script>
+<script src="javascript/algorithms.js" type="text/javascript"></script>
+<script src="javascript/componentsReaction.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*  navigation */
+nav {
+  padding: 20px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/*  main */
+
+main {
+  margin: 30px 25px;
+}
+
+/*  left-nav */
+.card {
+  border-radius: 10px;
+  float: left;
+  width: 20vw;
+  border-color: #0080FF;
+  border-width: 2px;
+}
+
+.card-body {
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+.card-body:hover {
+  box-shadow: 0 10px 30px rgba(16, 52, 166, 0.4);
+}
+
+h4 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #0080FF;
+}
+
+select {
+  margin-bottom: 10px;
+}
+
+input {
+  border-radius: 10px;
+}
+
+/*  desktop */
+.desktop {
+  width: 75vw;
+  display: inline-block;
+  padding-left: 50px;
+}
