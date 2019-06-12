@@ -130,7 +130,7 @@ function SSTF(array) {
     {
       if (index === InputArraySize - 1 && dau >= 0) {
         temp.splice(dau + 1, InputArraySize - dau - 1);
-        outputArray = outputArray.concat(temp);
+        outputArray = outputArray.concat(temp.reverse());
         break;
       } else if (cuoi <= InputArraySize - 1 && index === 0) {
         temp.splice(0, cuoi);
