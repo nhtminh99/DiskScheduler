@@ -40,79 +40,66 @@ function chooseCLOOK() {
 
 // --> button 'Add block' clicked <--
 function updateChart() {
-    // TODO: check side effects
-    // add new block to blockList
-    let blockListText = document.getElementById("blocks-list").value;
-    let newBlock = fillter(blockListText);
-    if (newBlock === false)
+    // update block range
+    let newRangeSelector = parseInt(document.getElementById("blocks-range").value) - 1;
+    let newBlocks = convertTextToNumericArray(document.getElementById("blocks-list").value);
+    if (newBlocks === false)
     {
-        window.alert("Array string is not valid");
+        window.alert("List of blocks is not valid");
         return false;
     }
-    // update block range
-    blocksRangeSelector = parseInt(document.getElementById("blocks-range").value);
-    for (let index = 0; index < blocksList.length; index++) {
-        if (blocksList[index] > blocksRangeSelector) {
-            window.alert(blocksRangeSelector + " is not valid. Please try again");
-            return false;
-        }
-    }
-    myChart.options.scales.yAxes[0].ticks.max = blocksRangeSelector;
-    for (let block in newBlock)
+    for (let block of newBlocks)
     {
-        if (newBlock[block] > blocksRangeSelector)
+        if (block > newRangeSelector)
         {
-            window.alert(newBlock + " is not valid. Please try again");
+            window.alert(`Range of ${newRangeSelector} is conflict with blocks list`);
             return false;
         }
     }
-    blocksList = newBlock;
+    rangeSelector = newRangeSelector;
+    blocks = newBlocks;
+    myChart.options.scales.yAxes[0].ticks.max = rangeSelector;
+
     // update chart depends on what algorithm is chosen
     if (document.getElementById("FCFS").classList.contains("active")) {
         applyFCFS();
     } else if (document.getElementById("CSCAN").classList.contains("active")) {
-        applyCSCANUP();
+        applyCSCAN();
     } else if (document.getElementById("LOOK").classList.contains("active")) {
-        applyLOOKUP();
+        applyLOOK();
     } else if (document.getElementById("SSTF").classList.contains("active")) {
         applySSTF();
     } else if (document.getElementById("SCAN").classList.contains("active")) {
-        applySCANUP();
+        applySCAN();
     } else if (document.getElementById("CLOOK").classList.contains("active")) {
-        applyCLOOKUP();
+        applyCLOOK();
     }
     // re-update chart
     myChart.update();
     return true;
 }
 
-function printArray(array) {
-    for (let i in array) {
-        console.log(array[i]);
-    }
-}
-
-function checkInput(string) {
-    for (let i = 0; i < string.length; i++) {
-        if (isNaN(string[i]) === true) {
+function isNumbersOnly(string) {
+    for (let char of string) {
+        if (isNaN(char)) {
             return false;
         }
     }
     return true;
 }
 
-function fillter(string) {
-    if (!checkInput(string)) {
-        console.log("Input is invalid");
+function convertTextToNumericArray(string) {
+    if (!isNumbersOnly(string)) {
         return false;
-    } else {
+    }
+    else {
         let array = string.split(" ");
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] === "") {
-                array.splice(i, 1);
-                i--;
+        for (let index = 0; index < array.length; index++) {
+            if (array[index] === "") {
+                array.splice(index, 1);
+                index--;
             }
-            array[i] = Number(array[i]);
+            array[index] = Number(array[index]);
         }
         return array;
     }

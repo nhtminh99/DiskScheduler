@@ -1,8 +1,8 @@
 // --> Initialize Chart <--
 let ctx                 = document.getElementById("myChart");
-let blocksList          = [];
+let blocks          = [];
 let timeline            = [];
-let blocksRangeSelector = parseInt(document.getElementById("blocks-range").value);
+let rangeSelector = parseInt(document.getElementById("blocks-range").value) - 1;
 
 let myChart = new Chart(ctx, {
   type: "line",
@@ -17,7 +17,7 @@ let myChart = new Chart(ctx, {
         hoverRadius: 9,
         lineTension: 0,
         fill: false,
-        data: blocksList
+        data: blocks
       },
       {
         label: "Down direction",
@@ -27,7 +27,7 @@ let myChart = new Chart(ctx, {
         hoverRadius: 9,
         lineTension: 0,
         fill: false,
-        data: blocksList
+        data: blocks
       }
     ]
   },
@@ -51,13 +51,13 @@ let myChart = new Chart(ctx, {
         {
           ticks: {
             stepSize: 1,
-            max: 1000,
+            max: 999,
             min: 0,
             callback: function (value) {
-              for (let i = 0; i < blocksList.length; i++) {
+              for (let i = 0; i < blocks.length; i++) {
                 if (
-                    blocksList[i] === value ||
-                    value === blocksRangeSelector ||
+                    blocks[i] === value ||
+                    value === rangeSelector ||
                     value === 0
                 ) {
                   return value;

@@ -21,11 +21,10 @@
        onclick="applyFCFS()"
        href="#">FCFS</a>
     <a class="nav-item nav-link" id="SSTF" onclick="applySSTF()" href="#">SSTF</a>
-    <a class="nav-item nav-link" id="SCAN" onclick="applySCANUP()" href="#">SCAN</a>
-    <a class="nav-item nav-link" id="CSCAN" onclick="applyCSCANUP()" href="#">C-SCAN</a>
-    <a class="nav-item nav-link" id="LOOK" onclick="applyLOOKUP()" href="#">LOOK</a>
-    <a class="nav-item nav-link" id="CLOOK" onclick="applyCLOOKUP()" href="#">C-LOOK</a>
-    <a class="nav-item nav-link disabled">ABOUT US</a>
+    <a class="nav-item nav-link" id="SCAN" onclick="applySCAN()" href="#">SCAN</a>
+    <a class="nav-item nav-link" id="CSCAN" onclick="applyCSCAN()" href="#">C-SCAN</a>
+    <a class="nav-item nav-link" id="LOOK" onclick="applyLOOK()" href="#">LOOK</a>
+    <a class="nav-item nav-link" id="CLOOK" onclick="applyCLOOK()" href="#">C-LOOK</a>
 </nav>
 
 <main>
@@ -49,19 +48,27 @@
                 </select>
 
                 <label for="blocks-list">Blocks list</label>
-                <input type="text"
-                       style="border-radius: 5px; margin-bottom: 20px;"
-                       class="form-control"
-                       name="blocks-list"
-                       id="blocks-list"
-                       placeholder="Give me tasks"/>
+                <textarea   style="border-radius: 5px; margin-bottom: 10px;"
+                            class="form-control"
+                            name="blocks-list"
+                            id="blocks-list"
+                            placeholder="Give me tasks"
+                            rows="3"/></textarea>
 
+                <label for="cylinderSeekResult">Cylinder seek total</label>
+                <input class="form-control"
+                    id="cylinderSeekResult"
+                    type="text"
+                    placeholder="Cylinder seek result..." 
+                    style="border-radius: 5px; margin-bottom: 20px;"
+                    readonly>
+                
                 <input name="submit_btn"
-                       id="submit-btn"
-                       class="btn btn-primary"
-                       type="button"
-                       value="Update scheduler"
-                       onclick="updateChart()"/>
+                    id="submit-btn"
+                    class="btn btn-primary"
+                    type="button"
+                    value="Update scheduler"
+                    onclick="updateChart()"/>
             </div>
         </div>
     </div>
@@ -70,6 +77,10 @@
         <canvas id="myChart"></canvas>
     </div>
 </main>
+
+<footer style="font-size: 13px;">
+    version: 190614a
+</footer>
 
 <script src="javascript/index.js" type="text/javascript"></script>
 <script src="javascript/algorithms.js" type="text/javascript"></script>
