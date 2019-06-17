@@ -1,9 +1,6 @@
 // apply algorithms
 function applyFCFS() {
-  console.log(">> FCFS chosen");
   chooseFCFS();
-  console.log(blocks);
-  console.log("Counter: " + blocks.length);
   timeline = [];
   for (let i = 0; i < blocks.length; i++) {
     timeline.push(i);
@@ -12,18 +9,14 @@ function applyFCFS() {
   myChart.data.datasets[1].data = [];
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById("cylinderSeekResult").value = calculateCylinderSeek(
     blocks
   );
 }
 
 function applySSTF() {
-  console.log(">> SSTF chosen");
   chooseSSTF();
   let newBlocksList = SSTF(blocks);
-  console.log(newBlocksList);
-  console.log("Counter: " + newBlocksList.length);
   timeline = [];
   for (let i = 0; i < newBlocksList.length; i++) {
     timeline.push(i);
@@ -32,19 +25,15 @@ function applySSTF() {
   myChart.data.datasets[1].data = [];
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById("cylinderSeekResult").value = calculateCylinderSeek(
     newBlocksList
   );
 }
 
 function applySCAN() {
-  console.log(">> SCAN chosen");
   chooseSCAN();
   let scanupList = scan_up(blocks, rangeSelector);
   let scandownList = scan_down(blocks);
-  console.log(scandownList);
-  console.log("Counter: " + scanupList.length);
   timeline = [];
 
   let timeLength =
@@ -58,7 +47,6 @@ function applySCAN() {
   myChart.data.datasets[1].data = scandownList;
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById(
     "cylinderSeekResult"
   ).value = `${calculateCylinderSeek(
@@ -67,14 +55,10 @@ function applySCAN() {
 }
 
 function applyCSCAN() {
-  console.log(">> CSCAN chosen");
   chooseCSCAN();
   let cscanupList = cscan_up(blocks, rangeSelector);
   let cscandownList = cscan_down(blocks, rangeSelector);
-  console.log(cscandownList);
-  console.log("Counter: " + cscanupList.length);
   timeline = [];
-
   let timeLength =
     cscanupList.length > cscandownList.length
       ? cscanupList.length
@@ -86,7 +70,6 @@ function applyCSCAN() {
   myChart.data.datasets[1].data = cscandownList;
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById(
     "cylinderSeekResult"
   ).value = `${calculateCylinderSeek(
@@ -95,14 +78,10 @@ function applyCSCAN() {
 }
 
 function applyLOOK() {
-  console.log(">> LOOK chosen");
   chooseLOOK();
   let lookupList = look_up(blocks);
   let lookdownList = look_down(blocks);
-  console.log(lookdownList);
-  console.log("Counter: " + lookupList.length);
   timeline = [];
-
   let timeLength =
     lookupList.length > lookdownList.length
       ? lookupList.length
@@ -114,7 +93,6 @@ function applyLOOK() {
   myChart.data.datasets[1].data = lookdownList;
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById(
     "cylinderSeekResult"
   ).value = `${calculateCylinderSeek(
@@ -123,14 +101,10 @@ function applyLOOK() {
 }
 
 function applyCLOOK() {
-  console.log(">> CLOOK chosen");
   chooseCLOOK();
   let clookupList = CLook_up(blocks);
   let clookdownList = CLook_down(blocks);
-  console.log(clookdownList);
-  console.log("Counter: " + clookupList.length);
   timeline = [];
-
   let timeLength =
     clookupList.length > clookdownList.length
       ? clookupList.length
@@ -142,7 +116,6 @@ function applyCLOOK() {
   myChart.data.datasets[1].data = clookdownList;
   myChart.data.labels = timeline;
   myChart.update();
-
   document.getElementById(
     "cylinderSeekResult"
   ).value = `${calculateCylinderSeek(

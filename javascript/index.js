@@ -1,7 +1,7 @@
 // --> Initialize Chart <--
-let ctx                 = document.getElementById("myChart");
-let blocks          = [];
-let timeline            = [];
+let ctx = document.getElementById("myChart");
+let blocks = [];
+let timeline = [];
 let rangeSelector = parseInt(document.getElementById("blocks-range").value) - 1;
 
 let myChart = new Chart(ctx, {
@@ -34,7 +34,7 @@ let myChart = new Chart(ctx, {
   options: {
     tooltips: {
       callbacks: {
-        title: function () { }
+        title: function() {}
       },
       backgroundColor: "rgba(0, 0, 0, 0)",
       bodyFontColor: "#0F52BA",
@@ -53,13 +53,12 @@ let myChart = new Chart(ctx, {
             stepSize: 1,
             max: 999,
             min: 0,
-            callback: function (value) {
-              for (let i = 0; i < blocks.length; i++) {
-                if (
-                    blocks[i] === value ||
-                    value === rangeSelector ||
-                    value === 0
-                ) {
+            callback: function(value) {
+              if (value === rangeSelector || value === 0) {
+                return value;
+              }
+              for (let block of blocks) {
+                if (block === value) {
                   return value;
                 }
               }
@@ -70,4 +69,3 @@ let myChart = new Chart(ctx, {
     }
   }
 });
-
